@@ -1,13 +1,16 @@
 #include <iostream>
 
-class log{
+class Log{
     public:
-        virtual void print() = 0;
+        virtual ~log() {}
+        virtual void print(std::string message) const = 0;
 };
+//log_factory creates interface for logs
+//used by singleton logger
+class log_factory;
 
-class error_log: public log{
-    public:
-        void print(){
-            std::cout<<"Error log"<<std::endl;
-        }
-};
+typedef enum{
+    error=1u,
+    info=2u,
+    warning=3u
+}log_type;

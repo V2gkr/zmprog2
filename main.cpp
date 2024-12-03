@@ -2,8 +2,7 @@
 #include "singleton.h"
 
 int main() {
-    sss s;
-    s.a=10;
+
 
     Logger& log1=Logger::getInstance();
     Logger& log2=Logger::getInstance();
