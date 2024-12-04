@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include "factory.h"
 
 
 class Log{
@@ -29,33 +29,17 @@ class warning_log : public Log{
         }
 };
 
-class log_factory{
-    public:
-        virtual ~log_factory() {}
-        virtual Log* fact_method() const = 0;
-        void create_log(log_type type, std::string message) const {
+Log* error_log_factory::fact_method() const{
+    return new error_log();
+}
 
-        }
+Log* info_log_factory::fact_method() const{
+    return new info_log();
+}
 
-};
+Log* warning_log_factory::fact_method() const{
+    return new warning_log();
+}
 
-class error_log_factory : public log_factory{
-    public:
-        Log* fact_method() const override {
-            return new error_log();
-        }
-};
-class info_log_factory : public log_factory{
-    public:
-        Log* fact_method() const override {
-            return new info_log();
-        }
-};
-class warning_log_factory : public log_factory{
-    public:
-        Log* fact_method() const override {
-            return new warning_log();
-        }
-};
 //it must be something like log_factory.create_log(error, "error message"), error is an enum
 //
