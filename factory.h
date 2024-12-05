@@ -3,11 +3,11 @@
 
 #include <iostream>
 
-class Log{
-    public:
-        virtual ~Log() {}
-        virtual void print(std::string message) const = 0;
-};
+// class Log{
+//     public:
+//         virtual ~Log() {}
+//         virtual void print(std::string message) const = 0;
+// };
 //log_factory creates interface for logs
 //used by singleton logger
 

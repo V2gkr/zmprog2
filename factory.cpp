@@ -2,11 +2,11 @@
 #include "factory.h"
 #include "singleton.h"
 
-// class Log{
-//     public:
-//         virtual ~Log() {}
-//         virtual void print(std::string message) const = 0;
-// };
+class Log{
+    public:
+        virtual ~Log() {}
+        virtual void print(std::string message) const = 0;
+};
 
 class error_log : public Log{
     public:
