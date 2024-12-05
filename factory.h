@@ -1,3 +1,6 @@
+#ifndef FACTORY_H
+#define FACTORY_H
+
 #include <iostream>
 
 class Log{
@@ -11,7 +14,7 @@ class Log{
 class log_factory{
     public:
         virtual ~log_factory() {}
-        virtual Log* fact_method() const = 0;
+        virtual void fact_method(std::string message) const = 0;
         // void create_log(log_type type, std::string message) const {
 
         // }
@@ -20,18 +23,20 @@ class log_factory{
 
 class error_log_factory : public log_factory{
     public:
-        Log* fact_method() const ;
+        void fact_method(std::string message) const override;
 };
 class info_log_factory : public log_factory{
     public:
-        Log* fact_method() const ;
+        void fact_method(std::string message) const override;
 };
 class warning_log_factory : public log_factory{
     public:
-        Log* fact_method() const ;
+        void fact_method(std::string message) const override;
 };
 typedef enum{
     error=1u,
     info=2u,
     warning=3u
 }log_type;
+
+#endif

@@ -12,26 +12,34 @@ Logger& Logger::getInstance(){
 void Logger::log(const std::string& message,log_type type){
     //it must be in singleton method log , not here
     switch(type){
-        case error:
+        case error:{
             log_factory* factory = new error_log_factory();
-            Log* log=factory->fact_method();
-            log->print(message);
-            delete log;
-            
-            
-            //Log* log=this->fact_method();
-            
-            
+            factory->fact_method(message);
+            delete factory;
             break;
-        case info:
-
+        }
+        case info:{
+            log_factory* factory = new info_log_factory();
+            factory->fact_method(message);
+            delete factory;
             break;
-        case warning:
-
+        }
+        case warning:{
+            log_factory* factory = new warning_log_factory();
+            factory->fact_method(message);
+            delete factory;
             break;
-        default:
+        }
+        default:{
             std::cout<<"Invalid log type"<<std::endl;
+            break;
+        }
     }    
-    std::cout << message << std::endl;
+    //std::cout << message << std::endl;
 }
 
+void Logger::show_logs(){
+    for(uint8_t i=0;i<logs.size();i++){
+        std::cout<<logs.at(i)<<std::endl;
+    }
+}
