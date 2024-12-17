@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
-#include "singleton.h"
-#include "factory.h"
+#include "logger.h"
+#include "log_factory.h"
 #include <memory>
 
 //logger class with singleton pattern

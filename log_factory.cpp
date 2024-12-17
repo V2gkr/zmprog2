@@ -1,6 +1,6 @@
 #include <iostream>
-#include "factory.h"
-#include "singleton.h"
+#include "log_factory.h"
+#include "logger.h"
 
 
 

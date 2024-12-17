@@ -2,7 +2,7 @@
 #define SINGLETON_H
 
 #include <vector>
-#include "factory.h"
+#include "log_factory.h"
 
 class Logger{
     private:

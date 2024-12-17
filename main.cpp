@@ -1,5 +1,5 @@
 #include <iostream>
-#include "singleton.h"
+#include "logger.h"
 
 int main() {
 
