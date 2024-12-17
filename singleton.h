@@ -14,7 +14,9 @@ class Logger{
         Logger& operator=(const Logger&)=delete;
     public:
         //vector to store logs
-        std::vector<std::string> logs;
+        //std::vector<std::string> logs;
+
+        std::vector<Log*> logs_array;
         //static method to get instance of logger
         static Logger& getInstance();
         //log method 

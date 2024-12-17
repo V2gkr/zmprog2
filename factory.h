@@ -2,25 +2,24 @@
 #define FACTORY_H
 
 #include <iostream>
-
-
-
-// class error_log_factory : public log_factory{
-//     public:
-//         void fact_method(std::string message) const override;
-// };
-// class info_log_factory : public log_factory{
-//     public:
-//         void fact_method(std::string message) const override;
-// };
-// class warning_log_factory : public log_factory{
-//     public:
-//         void fact_method(std::string message) const override;
-// };
 typedef enum{
     error=1u,
     info=2u,
     warning=3u
 }log_type;
+
+class Log{
+  public:
+    std::string msg;
+    log_type type;
+};
+
+class Log_Factory{
+  public:
+  ~Log_Factory(){};
+  Log* Create_Log(std::string message,log_type type);
+};
+
+
 
 #endif

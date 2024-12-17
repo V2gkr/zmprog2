@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include "singleton.h"
+#include "factory.h"
+#include <memory>
 
 //logger class with singleton pattern
 
@@ -10,36 +12,34 @@ Logger& Logger::getInstance(){
 }
 
 void Logger::log(const std::string& message,log_type type){
-    //it must be in singleton method log , not here
-    switch(type){
-        case error:{
-            log_factory* factory = new error_log_factory();
-            factory->fact_method(message);
-            delete factory;
-            break;
-        }
-        case info:{
-            log_factory* factory = new info_log_factory();
-            factory->fact_method(message);
-            delete factory;
-            break;
-        }
-        case warning:{
-            log_factory* factory = new warning_log_factory();
-            factory->fact_method(message);
-            delete factory;
-            break;
-        }
-        default:{
-            std::cout<<"Invalid log type"<<std::endl;
-            break;
-        }
-    }    
-    //std::cout << message << std::endl;
+  static Log_Factory factory;
+  logs_array.push_back(factory.Create_Log(message,type));
+  //std::unique_ptr<log_factory> factory;
 }
 
 void Logger::show_logs(){
-    for(uint8_t i=0;i<logs.size();i++){
-        std::cout<<logs.at(i)<<std::endl;
+  for(auto i:logs_array){
+    switch(i->type){
+      case error:{
+        std::cout<<"Error: ";
+        break;
+      }
+      case info:{
+        std::cout<<"Info: ";
+        break;
+      }
+      case warning:{
+        std::cout<<"Warning: ";
+        break;
+      }
+      default:{
+        std::cout<<"Unknown: ";
+        break;
+      }
     }
+    std::cout<<i->msg<<std::endl;
+  }
+    // for(uint8_t i=0;i<logs.size();i++){
+    //     std::cout<<logs.at(i)<<std::endl;
+    // }
 }
