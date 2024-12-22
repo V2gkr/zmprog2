@@ -3,7 +3,7 @@
 #include "logger.h"
 
 
-
+/* constructors for different logs , passed only message argument since type is known */
 class Error_Log : public Log{
   public:
     Error_Log(std::string message){
@@ -28,7 +28,7 @@ class Warning_Log : public Log{
     }
 };
 
-
+/* factory method to generate a specific log based on a type log_type*/
 Log* Log_Factory::Create_Log(std::string message,log_type type){
   Log* log;
   switch(type){
