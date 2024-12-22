@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(Logger)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+add_executable(Logger src/app/main.cpp 
+                      src/log_factory/log_factory.cpp 
+                      src/logger/logger.cpp)
+
+target_include_directories(Logger PRIVATE ${PROJECT_SOURCE_DIR}/inc/log_factory ${PROJECT_SOURCE_DIR}/inc/logger)#${PROJECT_SOURCE_DIR}/inc/logger/logger.h
+
+
+
