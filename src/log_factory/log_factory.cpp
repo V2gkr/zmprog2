@@ -6,25 +6,26 @@
 /* constructors for different logs , passed only message argument since type is known */
 class Error_Log : public Log{
   public:
-    Error_Log(std::string message){
+    Error_Log(std::string message):Log(error){
       msg=message;
-      type=error;
+      //type=error;
     }
 };
 
 class Info_Log : public Log{
   public:
-    Info_Log(std::string message){
+    Info_Log(std::string message):Log(info){
       msg=message;
-      type=info;
+      //type=info;
     }
 };
 
 class Warning_Log : public Log{
   public:
-    Warning_Log(std::string message){
+    Warning_Log(std::string message):Log(warning){//
       msg=message;
-      type=warning;
+      //type=warning;
+      
     }
 };
 

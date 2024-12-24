@@ -16,8 +16,9 @@ typedef enum{
  */
 class Log{
   public:
+    Log(log_type type):type(type){}
     std::string msg;
-    log_type type;
+    const log_type type;
 };
 
 /** @brief: log factory class
